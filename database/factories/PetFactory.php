@@ -20,11 +20,12 @@ class PetFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'race' => $this->faker->randomElement(['L','M','B']),
+            'race' => $this->faker->randomElement(['Alaskan Malamute', 'Shih Tzu', 'Dalmatyńczyk', 'Chow Chow', 'Australijski Owczarek', 'Seter Irlandzki', 'Beagle', 'Samoyed', 'Sznaucer miniaturowy', 'Pomeranian', 'Border Collie', 'Bull Terrier', 'Basset Hound', 'Cocker Spaniel', 'Dogo Argentino']),
+            //
             'gender' => $this->faker->randomElement(['MALE','FEMALE']),
             'age' => $this->faker->numberBetween(1, 10),
             'description' => $this->faker->randomElement(['OPIS','OPIS 1','OPIS 2']),
-            'image' => $this->faker->image(),
+            'image' => $this->faker->randomElement(['https://t3.ftcdn.net/jpg/05/59/27/48/360_F_559274893_O9iSRQwTKIkAooNTglilMgx2yMcXK9Or.jpg','https://cdn.mos.cms.futurecdn.net/ASHH5bDmsp6wnK6mEfZdcU-650-80.jpg.webp']),
             'invoice_id' => Invoice::factory(),
 
         ];
