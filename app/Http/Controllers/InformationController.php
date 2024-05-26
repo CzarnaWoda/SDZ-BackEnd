@@ -9,28 +9,29 @@ use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 class InformationController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth.jwt');
-    }
 
     public function store(Request $request)
     {
-        $user = JWTAuth::parseToken()->authenticate();
+        $user = auth()->user();
 
         $request->validate([
             'street' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
             'phone_number' => 'required|string|max:20',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255'
         ]);
 
         $information = Information::create([
-            'user_id' => $user->id,
+
+            'user_id' => auth()->user()->id,
             'street' => $request->street,
             'city' => $request->city,
             'postal_code' => $request->postal_code,
             'phone_number' => $request->phone_number,
+            'firstName' => $request->firstName,
+            'lastName' => $request->lastName
         ]);
 
         return response()->json(['message' => 'Information created successfully', 'information' => $information], 201);
@@ -38,7 +39,7 @@ class InformationController extends Controller
 
     public function update(Request $request)
     {
-        $user = JWTAuth::parseToken()->authenticate();
+        $user = auth()->user();
 
         $request->validate([
             'street' => 'required|string|max:255',
@@ -62,7 +63,7 @@ class InformationController extends Controller
 
     public function get()
     {
-        $user = JWTAuth::parseToken()->authenticate();
+        $user = auth()->user();
 
         $information = $user->information;
 

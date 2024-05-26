@@ -9,10 +9,17 @@ class Pet extends Model
 {
     use HasFactory;
 
-
+    protected $fillable = [
+        'name',
+        'race',
+        'gender',
+        'age',
+        'description',
+        'image',
+    ];
 
     public function invoice() {
-        return $this->belongsTo(Invoice::class);
+        return $this->hasOne(Invoice::class);
     }
 
     public function customer() {

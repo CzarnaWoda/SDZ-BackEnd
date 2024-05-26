@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->integer('customer_id');
-            $table->integer('amount');
-            $table->char('status'); //Accepted, Confirmed, Void
-            $table->dateTime('confirmed_dated')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('pet_id');
+            $table->timestamp('date'); // Dodaj kolumnę dla daty spotkania
 
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('pet_id')->references('id')->on('pets')->onDelete('cascade');
         });
     }
 

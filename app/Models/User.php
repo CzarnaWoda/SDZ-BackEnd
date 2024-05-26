@@ -28,6 +28,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasOne(Information::class);
     }
+    public function invoices() {
+        return $this->hasMany(Invoice::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -67,4 +70,9 @@ class User extends Authenticatable implements JWTSubject
             'password' => 'hashed',
         ];
     }
+    public function hasInformation()
+{
+    // Zwraca true, jeśli użytkownik ma powiązane informacje, w przeciwnym razie false
+    return $this->information != null;
+}
 }

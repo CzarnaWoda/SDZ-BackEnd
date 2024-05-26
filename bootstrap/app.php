@@ -16,7 +16,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'login' // <-- exclude this route
         ]);
         $middleware->alias([
-            'checkRole'=>\App\Http\Middleware\CheckRole::class,
+            'checkrole'=>\App\Http\Middleware\CheckRole::class,
+        ]);
+        $middleware->alias([
+            'logged'=>\App\Http\Middleware\logged::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

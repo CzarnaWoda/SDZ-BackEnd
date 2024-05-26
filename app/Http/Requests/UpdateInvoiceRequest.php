@@ -11,7 +11,7 @@ class UpdateInvoiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateInvoiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id' => 'sometimes|exists:users,id',
+            'pet_id' => 'sometimes|exists:pets,id',
+            'date' => 'sometimes|date'
+
+            // dodaj inne pola i ich walidacje
         ];
     }
 }

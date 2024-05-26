@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('city');
             $table->string('postal_code');
             $table->string('phone_number');
+            $table->string('firstName');
+            $table->string('lastName');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

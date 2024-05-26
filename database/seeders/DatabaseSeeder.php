@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             ]);
 
             // Pobieranie roli "user"
-            $roleUser = Role::where('name', 'user')->first();
+            $roleUser = Role::where('name', 'admin')->first();
+
 
             // Przypisanie roli "user" do użytkownika
             $user->roles()->attach($roleUser);

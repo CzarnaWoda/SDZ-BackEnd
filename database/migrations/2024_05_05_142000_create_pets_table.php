@@ -17,9 +17,8 @@ return new class extends Migration
             $table->string('race');
             $table->string('gender');
             $table->integer('age');
-            $table->string('description');
-            $table->string('image');
-            $table->integer('invoice_id');
+            $table->text('description');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

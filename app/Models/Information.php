@@ -15,6 +15,8 @@ class Information extends Model
         'city',
         'postal_code',
         'phone_number',
+        'firstName',
+        'lastName'
     ];
 
     public function user()

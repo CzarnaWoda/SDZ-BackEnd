@@ -9,9 +9,9 @@ class StoreInvoiceRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -19,10 +19,13 @@ class StoreInvoiceRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'user_id' => 'required|exists:users,id',
+            'pet_id' => 'required|exists:pets,id',
+            'date' => 'required|date'
+            // dodaj inne pola i ich walidacje
         ];
     }
 }

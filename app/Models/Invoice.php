@@ -10,14 +10,15 @@ use App\Models\Pet;
 class Invoice extends Model
 {
     use HasFactory;
+    protected $fillable = ['user_id', 'pet_id', 'date', 'other_fields']; // Dodaj inne pola, które masz
 
 
 
-    public function customer() {
-        return $this->belongsTo(Customer::class);
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 
     public function pet(){
-        return $this->hasOne(Pet::class);
+        return $this->belongTo(Pet::class);
     }
 }
